@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Solutions Finglas</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #cc0000;
+    --red-bright: #ff1a1a;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --darker: #0d0d0d;
+    --grey: #1a1a1a;
+    --grey-mid: #2a2a2a;
+    --white: #ffffff;
+    --white-muted: #aaaaaa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px 20px 100px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(180,0,0,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(180,0,0,0.07) 0%, transparent 60%),
+      linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 50%, #080808 100%);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px
+    );
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -80px; top: 0;
+    width: 260px; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(180,0,0,0.18) 60%, rgba(180,0,0,0.08) 80%, transparent 100%);
+    pointer-events: none;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: -80px; top: 0;
+    width: 260px; height: 100%;
+    background: linear-gradient(225deg, transparent 40%, rgba(180,0,0,0.12) 60%, rgba(180,0,0,0.06) 80%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: fadeUp 1s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-wrap {
+    margin-bottom: 32px;
+    animation: fadeUp 0.9s ease both;
+  }
+  .logo-wrap img {
+    max-width: 420px;
+    width: 90vw;
+    filter: drop-shadow(0 0 40px rgba(200,0,0,0.4));
+  }
+
+  .hero-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(13px, 2vw, 17px);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--white-muted);
+    margin-bottom: 20px;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 9vw, 110px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    animation: fadeUp 1s 0.3s ease both;
+  }
+  .hero-headline span {
+    color: var(--red);
+    display: block;
+  }
+
+  .hero-sub {
+    margin-top: 22px;
+    font-size: clamp(15px, 2vw, 18px);
+    font-weight: 300;
+    color: var(--white-muted);
+    max-width: 540px;
+    line-height: 1.6;
+    animation: fadeUp 1s 0.45s ease both;
+  }
+
+  .hero-cta {
+    margin-top: 44px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 16px 38px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.25s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--red-bright); transform: scale(1.03); }
+
+  .btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 16px 38px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: border-color 0.25s, color 0.25s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--red); color: var(--red); transform: scale(1.03); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.25);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeUp 1s 1s ease both;
+    z-index: 2;
+  }
+  .scroll-hint::after {
+    content: '';
+    width: 1px; height: 36px;
+    background: linear-gradient(to bottom, rgba(180,0,0,0.7), transparent);
+    animation: scrollPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity: 0.3; transform: scaleY(0.7); }
+    50%      { opacity: 1;   transform: scaleY(1); }
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--red) 30%, var(--red) 70%, transparent);
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--darker);
+    padding: 90px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .services::before {
+    content: '';
+    position: absolute;
+    top: -120px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 300px;
+    background: radial-gradient(ellipse, rgba(150,0,0,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .section-label {
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 6vw, 72px);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 60px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: var(--grey);
+    padding: 36px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s, transform 0.3s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 3px; height: 100%;
+    background: var(--red);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.35s ease;
+  }
+  .service-card:hover { background: #1f1f1f; transform: translateX(4px); }
+  .service-card:hover::before { transform: scaleY(1); }
+
+  .service-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--white-muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ── BUSINESS CARD SHOWCASE ── */
+  .showcase {
+    background: var(--black);
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .showcase .section-title { margin-bottom: 40px; }
+  .showcase img {
+    max-width: 860px;
+    width: 95%;
+    border: 1px solid #222;
+    box-shadow:
+      0 0 0 1px rgba(180,0,0,0.2),
+      0 24px 80px rgba(0,0,0,0.8),
+      0 0 60px rgba(150,0,0,0.12);
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .showcase img:hover {
+    transform: scale(1.015);
+    box-shadow:
+      0 0 0 1px rgba(180,0,0,0.4),
+      0 32px 100px rgba(0,0,0,0.9),
+      0 0 80px rgba(180,0,0,0.2);
+  }
+
+  /* ── WHY US ── */
+  .why-outer {
+    background: var(--black);
+    padding: 90px 20px;
+  }
+  .why {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .why-text { flex: 1; min-width: 280px; max-width: 500px; }
+  .why-text .section-label,
+  .why-text .section-title { text-align: left; }
+  .why-text p {
+    color: var(--white-muted);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+
+  .why-stats {
+    flex: 1;
+    min-width: 260px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .stat-box {
+    background: var(--grey);
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+  }
+  .stat-box:hover { background: var(--grey-mid); }
+  .stat-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transition: transform 0.35s;
+  }
+  .stat-box:hover::after { transform: scaleX(1); }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--red);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-muted);
+    margin-top: 6px;
+    font-weight: 500;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--darker);
+    padding: 90px 40px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(150,0,0,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+
+  .contact-phone {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 10vw, 100px);
+    color: var(--white);
+    letter-spacing: 0.06em;
+    line-height: 1;
+    margin: 24px 0;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.25s, text-shadow 0.25s;
+  }
+  .contact-phone:hover {
+    color: var(--red);
+    text-shadow: 0 0 40px rgba(200,0,0,0.5);
+  }
+
+  .contact-info {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 44px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--white-muted);
+    font-size: 15px;
+  }
+  .contact-item strong { color: var(--white); }
+  .contact-item .dot {
+    width: 6px; height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080808;
+    border-top: 1px solid #1a1a1a;
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer img { height: 36px; filter: brightness(0.7); }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; }
+
+  /* ── FLOATING CALL BUTTON ── */
+  .float-call {
+    display: none;
+    position: fixed;
+    bottom: 24px; right: 24px;
+    background: var(--red);
+    color: #fff;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    text-decoration: none;
+    box-shadow: 0 4px 24px rgba(180,0,0,0.5);
+    z-index: 1000;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 4px 24px rgba(180,0,0,0.5); }
+    50%      { box-shadow: 0 4px 48px rgba(180,0,0,0.85); }
+  }
+  @media (max-width: 600px) { .float-call { display: flex; } }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .services, .showcase, .why-outer, .contact { padding: 60px 20px; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="logo-wrap">
+      <img src="images/logo.jpg" alt="Auto Solutions Finglas">
+    </div>
+    <p class="hero-tagline">Dublin's Trusted Auto Specialists</p>
+    <h1 class="hero-headline">
+      Your Car<span>Deserves the Best.</span>
+    </h1>
+    <p class="hero-sub">Expert car care in the heart of Finglas — from diagnostics to full repairs, we keep Dublin's roads moving.</p>
+    <div class="hero-cta">
+      <a href="tel:0858320780" class="btn-primary">📞 &nbsp;Call Now</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label reveal">What We Do</p>
+  <h2 class="section-title reveal">Our Services</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🔬</span>
+      <div class="service-name">Diagnostics</div>
+      <div class="service-desc">Full electronic and mechanical fault diagnosis using the latest diagnostic tools to pinpoint exactly what your car needs.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🔧</span>
+      <div class="service-name">Car Servicing</div>
+      <div class="service-desc">Comprehensive full and interim services to keep your vehicle running reliably and efficiently all year round.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">✅</span>
+      <div class="service-name">NCT Repairs</div>
+      <div class="service-desc">Failed your NCT? We handle all NCT-related repairs and re-tests — getting you back on the road quickly and affordably.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">⚙️</span>
+      <div class="service-name">Timing Belts & Chains</div>
+      <div class="service-desc">Precise timing belt and chain replacements — one of the most critical services to protect your engine from costly damage.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">💻</span>
+      <div class="service-name">ECU Solutions</div>
+      <div class="service-desc">Advanced ECU diagnostics, coding, and repair. We resolve complex electronic faults other garages can't.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🌀</span>
+      <div class="service-name">Suspension</div>
+      <div class="service-desc">Shock absorbers, springs, bushings, and full suspension geometry checks for a smooth, safe ride.</div>
+    </div>
+    <div class="service-card reveal" style="grid-column: span 2;">
+      <span class="service-icon">🔩</span>
+      <div class="service-name">Clutch & Gearbox Repair</div>
+      <div class="service-desc">From clutch replacements to full gearbox overhauls — manual and automatic transmission work carried out by experienced technicians.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- BUSINESS CARD SHOWCASE -->
+<section class="showcase">
+  <p class="section-label reveal">At a Glance</p>
+  <h2 class="section-title reveal">Everything We Offer</h2>
+  <img src="images/business-card.png" alt="Auto Solutions Finglas Services" class="reveal">
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHY US -->
+<div class="why-outer">
+  <div class="why">
+    <div class="why-text">
+      <p class="section-label reveal">Why Choose Us</p>
+      <h2 class="section-title reveal">Local Expertise,<br>Pro Results.</h2>
+      <p class="reveal">At Auto Solutions Finglas, we combine years of hands-on experience with the latest diagnostic technology. No fuss, no upselling — just honest, quality work at a fair price.</p>
+      <p class="reveal">Whether it's a routine service or a complex electrical fault, our team treats every car like it's their own. Proudly serving Finglas and all of north Dublin.</p>
+      <a href="tel:0858320780" class="btn-primary reveal">Book a Call</a>
+    </div>
+    <div class="why-stats reveal">
+      <div class="stat-box">
+        <span class="stat-num">10+</span>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">8</span>
+        <div class="stat-label">Services Offered</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">100%</span>
+        <div class="stat-label">Honest Pricing</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">★★★★★</span>
+        <div class="stat-label">Customer Rated</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <p class="section-label reveal">Get In Touch</p>
+    <h2 class="section-title reveal">Ready to Book?</h2>
+    <p class="reveal" style="color: var(--white-muted); font-size: 17px; font-weight: 300; max-width: 480px; margin: 0 auto 8px; line-height: 1.7;">
+      Call us today to book your appointment or get a free quote. We're here to help.
+    </p>
+    <a href="tel:0858320780" class="contact-phone reveal">(085) 832-0780</a>
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <span class="dot"></span>
+        <span><strong>Location:</strong> Finglas, Dublin</span>
+      </div>
+      <div class="contact-item">
+        <span class="dot"></span>
+        <span><strong>Hours:</strong> Mon–Sat: 8am – 6pm</span>
+      </div>
+      <div class="contact-item">
+        <span class="dot"></span>
+        <span><strong>NCT Repairs</strong> &amp; <strong>All Makes Welcome</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="images/logo.jpg" alt="Auto Solutions Finglas Logo">
+  <p>© 2026 Auto Solutions Finglas. All rights reserved.</p>
+</footer>
+
+<a class="float-call" href="tel:0858320780" title="Call Us">📞</a>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
