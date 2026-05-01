@@ -491,9 +491,52 @@
   @media (max-width: 600px) { .float-call { display: flex; } }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 700px) {
-    .services, .showcase, .why-outer, .contact { padding: 60px 20px; }
-    footer { flex-direction: column; text-align: center; }
+  @media (max-width: 768px) {
+    /* Hero */
+    .hero { padding: 50px 20px 90px; min-height: 100svh; }
+    .hero-headline { font-size: clamp(44px, 13vw, 72px); }
+    .hero-sub { font-size: 15px; }
+    .hero-cta { flex-direction: column; align-items: center; gap: 12px; }
+    .btn-primary, .btn-secondary { width: 100%; max-width: 280px; text-align: center; padding: 14px 28px; font-size: 16px; }
+
+    /* Sections */
+    .services { padding: 60px 16px; }
+    .services-grid { grid-template-columns: 1fr; gap: 2px; }
+    .service-card { padding: 28px 20px; }
+    /* Remove span-2 on mobile */
+    .service-card[style*="span 2"] { grid-column: span 1 !important; }
+
+    .showcase { padding: 60px 16px; }
+
+    /* Why us */
+    .why-outer { padding: 60px 16px; }
+    .why { flex-direction: column; gap: 40px; }
+    .why-text .section-label,
+    .why-text .section-title { text-align: center; }
+    .why-text p { text-align: center; }
+    .why-text { text-align: center; }
+    .why-stats { width: 100%; max-width: 400px; margin: 0 auto; }
+    .stat-num { font-size: 40px; }
+
+    /* Contact */
+    .contact { padding: 60px 16px; }
+    .contact-phone { font-size: clamp(38px, 11vw, 64px); word-break: break-all; }
+    .contact-info { flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+    .contact-item { justify-content: center; font-size: 14px; }
+
+    /* Section titles */
+    .section-title { font-size: clamp(36px, 10vw, 56px); margin-bottom: 40px; }
+
+    /* Footer */
+    footer { flex-direction: column; text-align: center; padding: 24px 16px; }
+  }
+
+  @media (max-width: 400px) {
+    .hero-headline { font-size: 40px; }
+    .logo-wrap img { width: 95vw; }
+    .why-stats { grid-template-columns: 1fr 1fr; }
+    .stat-num { font-size: 34px; }
+    .stat-label { font-size: 10px; letter-spacing: 0.08em; }
   }
 
   /* ── REVEAL ── */
@@ -628,7 +671,7 @@
       </div>
       <div class="contact-item">
         <span class="dot"></span>
-        <span><strong>Hours:</strong> Mon–Sat: 8am – 6pm</span>
+        <span><strong>Hours:</strong> Mon–Fri: 9am – 5pm</span>
       </div>
       <div class="contact-item">
         <span class="dot"></span>
